@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{background: yellow}
+    </style>
+</head>
+
+<body>
+    <script>
+        var a = { n: 1 }
+        var b = a;
+        a.x = a = { n: 2 }
+        console.log(a)
+        console.log(b)
+
+        console.log(parseInt('3', 3))
+
+
+        console.log([1, 2, 4, 5, 10, 22, 108].sort((a, b) => a - b))
+
+        function abc(a) {
+            return a == 1 && 2 || a == 2 && 1
+        }
+
+        console.log(abc(2))
+
+        function FirstNotRepeatingChar(str) {
+            if (str.length == 0)
+                return -1;
+
+            var map = {};
+            for (var i = 0; i < str.length; i++) {
+                var charX = str[i]
+                console.log(!map[charX])
+                if (!map[charX]) {
+                    map[charX] = 1;
+                } else {
+                    map[charX]++;
+                }
+            }
+
+            for (var i = 0; i < str.length; i++) {
+                var charY = str[i];
+                if (map[charY] == 1)
+                    return charY;
+            }
+        }
+        // console.log(FirstNotRepeatingChar('asdasdbvgdjsgdgsdbsd'))
+        
+        var fade=function(node){
+    var level=1;
+    var step=function(){
+        var hex=level.toString(16);
+        console.log(hex)
+        node.style.backgroundColor='#FFFF'+hex+hex;
+        if(level<15){
+            level+=1;
+            setTimeout(step,100);
+        }
+    }
+    setTimeout(step,100);
+}
+
+// fade(document.body);
+
+var array = [
+];
+for (var i = 0; i < 10; i++) {
+  var fun = function () {
+    console.log(i);
+  }
+  array.push(fun);
+//   console.log(array)
+}
+var index = array.length;
+while (index > 0) {
+  array[--index]()
+} 
+
+var funB,funC;
+(function () {
+  var a = 1;
+  (function (a) {
+    funB = function () {
+      a = a + 1;
+      console.log(a);
+    }
+  }(a));
+  (function (a) {
+    funC = function () {
+      a = a + 1;
+      console.log(a);
+    }
+  }(a));
+}());
+// funB()||funC();
+
+
+function name(arr) {
+    arr[0] = 4
+    arr = [5,6,7]
+    console.log(arr)
+}
+
+var arr = [1,2,3]
+name(arr)
+console.log(arr)
+
+for (let i=1; i<=9; i++) {
+     setTimeout( function timer(){
+     console.log( i );
+     },1000 );
+ }
+
+// generator 封装async函数
+function gen(time) {
+  return new Promise((resolve,reject) => {
+    setTimeout(() => {
+      console.log(time)
+      resolve()
+    }, time);
+  })
+}
+
+function* generator() {
+  yield gen(1000)
+  yield gen(2000)
+}
+
+function _async(gen) {
+
+  return new Promise((resolve,reject) => {
+    const iter = gen();
+    const res = [];
+    const run = () => {
+      let item = item.next();
+      if(!item.done) {
+        res.push(item.value)
+        item.value.then(()=>{
+          run()
+        })
+      }
+      else{
+        resolve(res)
+      }
+    }
+    run()
+  })
+  
+}
+
+_async(generator).then(res => console.log(res))
+
+
+
+
+
+    </script>
+</body>
+
+</html>
