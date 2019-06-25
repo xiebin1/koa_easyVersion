@@ -29,7 +29,7 @@ let allService = {
         return allService.query(_sql)
     },
     adduserData(obj) {
-        let _sql = `INSERT INTO user set user=?, pass=?`;
+        let _sql = `INSERT INTO user set username=?, password=?`;
         return allService.query(_sql,obj)
     }
 }
